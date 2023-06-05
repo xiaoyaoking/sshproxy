@@ -1,5 +1,5 @@
 # sshproxy
-
+<pre>
 ssh转发代理，服务器不需要安装任何服务端。
 
 xyproxy.exe	windows x64平台
@@ -59,3 +59,5 @@ passwd xyproxy
 		]
 	}
 }
+
+</pre>
