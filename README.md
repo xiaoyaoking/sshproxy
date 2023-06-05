@@ -16,6 +16,9 @@ useradd -s /bin/false xyproxy
 passwd xyproxy
 输入这个账号的新密码
 
+IP库采用：GeoLite2-Country_20230602.tar  可以自行更新替换 ip.db
+已知问题：IP库个别IP定位不准或者IP未收录，出现这种情况都会走 默认线路
+
 配置文件 xyproxy.json 说明：
 
 {
