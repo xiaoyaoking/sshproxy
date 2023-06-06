@@ -58,7 +58,7 @@ IP库采用：GeoLite2-Country_20230602.tar  可以自行更新替换 ip.db
 				"go": "remote"			//对应线路 值: local 本地网络   remote 远程网络
 			},
 			{
-				"type": "domainip1",	//规则类型 type 为 domain 则请求类型为域名的 会走此规则
+				"type": "domainip",	//规则类型 type 为 domain 则请求类型为域名的 会走此规则
 				"rule": "NOTME",		//特殊值: NOTME IP归属地不是 你所在国家  则走此线路
 				"go": "remote"			//对应线路 值: local 本地网络   remote 远程网络
 			}
