@@ -16,9 +16,6 @@ useradd -s /bin/false xyproxy
 passwd xyproxy
 输入这个账号的新密码
 
-IP库采用：GeoLite2-Country_20230602.tar  可以自行更新替换 ip.db
-已知问题：IP库个别IP定位不准或者IP未收录，出现这种情况都会走 默认线路
-
 配置文件 xyproxy.json 说明：
 
 {
@@ -36,34 +33,37 @@ IP库采用：GeoLite2-Country_20230602.tar  可以自行更新替换 ip.db
     "routing": {						//路由功能
 		"default": "remote",   			//默认线路(未匹配到规则,或者IP归属地查询失败则走此线路),值: local 本地网络 , remote 远程网络
 		"me": "CN",						//你所在国家
-		"rules": [						//规则列表，规则会按照规则顺序作为优先级执行匹配。
-			{
-				"type": "ip",			//规则类型 type 为 IP 则请求类型为IP地址的 会走此规则
+		"rules": [						//规则列表，
+			{							//规则可单条可多条,优先级为上下顺序。
+				"type": "ip",			//规则类型 type 为 IP 根据IP地址匹配 (值: ip <IP地址>  domain <域名>  domainip <域名解析IP>)
 				"rule": "CN|HK",        //IP归属地为 中国 或者 香港的 走此线路, 特殊值: NOTME IP归属地不是 你所在国家  则走此线路
 				"go": "local"           //对应线路 值: local 本地网络   remote 远程网络
 			},
 			{
-				"type": "domain",		//规则类型 type 为 domain 则请求类型为域名的 会走此规则
+				"type": "domain",		//规则类型 type 为 domain 根据域名匹配
 				"rule": "ip138.com|baidu.com|www.qq.com",	//域名匹配正则，ip138.com 或 baidu.com 的所有子域名 或 www.qq.com 域名走此线路
 				"go": "local"			//对应线路 值: local 本地网络   remote 远程网络
 			},
 			{
-				"type": "domainip",    //规则类型 type 为 domainip 则请求类型为域名的 会走此规则
+				"type": "domainip",    	//规则类型 type 为 domainip 根据域名解析IP匹配
 				"rule": "CN|HK",		//域名DNS匹配正则，IP归属地为 中国 或者 香港的 走此线路
 				"go": "local"			//对应线路 值: local 本地网络   remote 远程网络
 			},
 			{
-				"type": "ip",			/规则类型 type 为 IP 则请求类型为IP地址的 会走此规则
+				"type": "ip",			/规则类型 type 为 IP 根据IP地址匹配
 				"rule": "NOTME",		//特殊值: NOTME IP归属地不是 你所在国家  则走此线路
 				"go": "remote"			//对应线路 值: local 本地网络   remote 远程网络
 			},
 			{
-				"type": "domainip",	//规则类型 type 为 domain 则请求类型为域名的 会走此规则
+				"type": "domainip",		//规则类型 type 为 domain 根据域名解析IP匹配
 				"rule": "NOTME",		//特殊值: NOTME IP归属地不是 你所在国家  则走此线路
 				"go": "remote"			//对应线路 值: local 本地网络   remote 远程网络
 			}
 		]
 	}
 }
+
+IP库采用：GeoLite2-Country_20230602.tar  可以自行更新替换 ip.db
+已知问题：IP库一些IP定位不准或者IP未收录，出现这种情况都会走 默认线路
 
 </pre>
