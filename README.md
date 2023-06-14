@@ -4,6 +4,13 @@
 可以根据请求的IP归属地、域名、域名解析IP归属地 进行路由。
 配置文件支持多vps，单vps多端口，自己轮询。
 
+Google Translate:
+There is no technical content, it is the enhanced version of SSH -D, which is just convenient for my own use. I have used other third-party ones that do not support polling. I wrote one myself.
+Routing can be performed according to the requested IP address, domain name, and domain name resolution IP address.
+The configuration file supports multiple vps, single vps with multiple ports, and self-polling.
+Support http and socks5 proxy protocols
+
+
 <pre>
 ssh转发代理，服务器不需要安装任何服务端。 设置好配置信息后，浏览器或wifi设置中可以设置SOCKS5代理 
 
